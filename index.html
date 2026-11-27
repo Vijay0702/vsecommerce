@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VS Ecommerce</title>
+<meta name="description" content="VS Ecommerce is a Peterborough-based online retailer selling quality products through Amazon UK. Information for suppliers and customers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: trustworthy small UK retailer, clear and businesslike, warm to customers
+   IDEA: the supply chain itself — supplier, VS Ecommerce, Amazon fulfilment, customer's door
+   PICTURE: parcels travelling along a route from a supplier crate to a home, through a warehouse
+   COLOUR and TYPE: ice ground, ink, one hot pink accent; Space Grotesk 500/700 + Inter
+   LAYOUT: ink hero band, about, two-audience split (suppliers / customers), supplier steps, FAQ, business details + contact */
+:root{color-scheme:light dark;
+--bg:light-dark(#dff1f7,#06222e);--ink:light-dark(#06222e,#e6f4f9);--soft:light-dark(#3c5866,#9fbcc8);
+--card:light-dark(#ffffff,#0b2f3e);--line:light-dark(#b9dbe6,#18465a);--pink:#ff2e7e;--deep:#06222e;--ice:#dff1f7}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5.4vw,54px);font-weight:700}
+h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;margin-bottom:14px}
+h3{font-size:22px;font-weight:500;margin-bottom:8px}
+p{margin:0 0 12px;max-width:62ch}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(40px,6vw,88px) max(5vw,16px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font:600 16px Inter,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn.pink{background:var(--pink);color:#fff}
+.btn.pink:hover{background:#e01f6a}
+.btn.ghost{border-color:currentColor;background:transparent;color:inherit}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+header{position:sticky;top:0;z-index:5;background:var(--deep);color:var(--ice);border-bottom:1px solid #18465a}
+.nav{display:flex;align-items:center;gap:20px;padding:12px max(5vw,16px);max-width:1240px;margin:0 auto;flex-wrap:wrap}
+.logo{font:700 20px "Space Grotesk",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo b{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--pink);color:#fff;font-size:14px}
+.nav nav{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+.nav nav a{text-decoration:none;opacity:.85;font-size:15px;padding:8px 0}
+.nav nav a:hover{opacity:1;color:#fff}
+.hero{background:var(--deep);color:var(--ice)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero p.lead{font-size:18px;color:#b7d6e2;margin:18px 0 26px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .where{margin-top:22px;font-size:14px;color:#8fb2c0}
+.fig{position:relative;min-height:380px}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+@media(prefers-reduced-motion:no-preference){.mv{animation:mv 7s ease-in-out infinite}@keyframes mv{0%{transform:translate(0,0)}45%{transform:translate(170px,0)}55%{transform:translate(170px,0)}100%{transform:translate(340px,0)}}}
+.about .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.facts{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.facts li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.facts b{display:block;font-family:"Space Grotesk",sans-serif;font-size:18px;font-weight:500}
+.facts span{color:var(--soft);font-size:15px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:28px}
+.aud{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column}
+.aud .tag{display:inline-block;font-size:13px;font-weight:600;color:var(--pink);margin-bottom:10px}
+.aud h4{font:600 16px Inter,sans-serif;margin:14px 0 4px}
+.aud ul{padding-left:20px;margin:4px 0 8px}
+.aud li{margin-bottom:6px}
+.aud .btn{margin-top:auto;align-self:flex-start}
+.aud .btns{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:10px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:28px;counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;border-top:3px solid var(--ink);padding-top:14px}
+.steps li::before{content:counter(s);font:700 32px "Space Grotesk",sans-serif;color:var(--pink);display:block;margin-bottom:4px}
+.steps b{display:block;font-size:17px;margin-bottom:4px}
+.steps span{color:var(--soft);font-size:15px}
+.faqs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,48px)}
+.faqs h3{margin-bottom:6px}
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;font-weight:600;font-size:17px;padding:14px 0;min-height:44px}
+details p{color:var(--soft)}
+.contact{background:var(--deep);color:var(--ice)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px)}
+.contact p{color:#b7d6e2}
+.mail{font:500 20px "Space Grotesk",sans-serif;color:#fff;overflow-wrap:anywhere}
+dl.biz{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;margin:18px 0 0;font-size:15px;color:#b7d6e2}
+dl.biz dt{color:#8fb2c0}dl.biz dd{margin:0}
+form{display:grid;gap:14px}
+label{font-size:14px;font-weight:600;display:grid;gap:6px}
+input,textarea,select{font:16px Inter,sans-serif;padding:12px 14px;border-radius:12px;border:1px solid #2a5a70;background:#0b2f3e;color:#e6f4f9;min-height:48px;width:100%}
+textarea{min-height:120px;resize:vertical}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#out{display:none;background:#0b2f3e;border:1px solid var(--pink);border-radius:12px;padding:14px;font-size:15px}
+#out.on{display:block}
+footer{background:#041821;color:#8fb2c0;font-size:14px;padding:24px max(5vw,16px)}
+footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.hero .wrap,.contact .wrap,.grid2,.about .wrap,.faqs{grid-template-columns:minmax(0,1fr)}.fig{min-height:300px}}
+@media(max-width:600px){.nav nav{margin-left:0;gap:14px;width:100%}.steps,.row2{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="#top"><b>VS</b> VS Ecommerce</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#suppliers">Suppliers</a>
+      <a href="#customers">Customers</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="band hero">
+  <div class="wrap">
+    <div>
+      <h1>Quality products, delivered through Amazon</h1>
+      <p class="lead">VS Ecommerce is a UK online retailer. We source genuine products from trusted brands and suppliers and sell them on Amazon UK, with fast, reliable delivery through Fulfilment by Amazon.</p>
+      <div class="ctas">
+        <a class="btn pink" href="#suppliers">Supply to us</a>
+        <a class="btn ghost" href="#customers">Customer help</a>
+      </div>
+      <p class="where">Based in Peterborough, United Kingdom</p>
+    </div>
+    <div class="fig" aria-hidden="true">
+      <svg viewBox="0 0 540 380" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="bx" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9b98a"/><stop offset="1" stop-color="#c98f5c"/></linearGradient>
+          <linearGradient id="wh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16485c"/><stop offset="1" stop-color="#0c3343"/></linearGradient>
+        </defs>
+        <ellipse cx="270" cy="352" rx="250" ry="14" fill="#000" opacity=".25"/>
+        <!-- route -->
+        <path d="M70 300 H470" stroke="#245a70" stroke-width="10" stroke-linecap="round"/>
+        <path d="M70 300 H470" stroke="#ff2e7e" stroke-width="2" stroke-dasharray="4 10" stroke-linecap="round"/>
+        <!-- supplier crates -->
+        <g transform="translate(22 196)">
+          <rect x="0" y="40" width="86" height="64" rx="6" fill="url(#bx)"/>
+          <rect x="10" y="0" width="66" height="44" rx="6" fill="url(#bx)"/>
+          <path d="M43 0 v44 M0 72 h86" stroke="#a5713f" stroke-width="3"/>
+          <text x="43" y="132" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#b7d6e2">Supplier</text>
+        </g>
+        <!-- warehouse -->
+        <g transform="translate(190 150)">
+          <path d="M0 60 L80 10 L160 60 V150 H0 Z" fill="url(#wh)" stroke="#2a6a84"/>
+          <path d="M0 60 L80 10 L160 60" fill="none" stroke="#e6f4f9" stroke-width="3" opacity=".5"/>
+          <rect x="46" y="88" width="68" height="62" rx="4" fill="#06222e"/>
+          <path d="M46 102 h68 M46 116 h68 M46 130 h68" stroke="#245a70" stroke-width="2"/>
+          <rect x="54" y="36" width="52" height="20" rx="6" fill="#ff2e7e"/>
+          <text x="80" y="51" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="13" fill="#fff">VS</text>
+          <text x="80" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#b7d6e2">Amazon fulfilment</text>
+        </g>
+        <!-- home -->
+        <g transform="translate(420 200)">
+          <path d="M0 40 L50 4 L100 40 V100 H0 Z" fill="#e6f4f9"/>
+          <path d="M0 40 L50 4 L100 40" fill="none" stroke="#ff2e7e" stroke-width="5" stroke-linejoin="round"/>
+          <rect x="38" y="60" width="24" height="40" rx="3" fill="#06222e"/>
+          <rect x="12" y="52" width="18" height="16" rx="2" fill="#9fd4e6"/>
+          <text x="50" y="128" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" fill="#b7d6e2">Customer</text>
+        </g>
+        <!-- moving parcel -->
+        <g class="mv">
+          <g transform="translate(92 270)">
+            <rect width="34" height="26" rx="4" fill="url(#bx)"/>
+            <path d="M0 9 h34 M17 0 v9" stroke="#a5713f" stroke-width="2"/>
+          </g>
+        </g>
+        <!-- check badges -->
+        <g transform="translate(118 120)"><circle r="18" fill="#ff2e7e"/><path d="M-7 0 l5 5 l9 -10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <g transform="translate(470 160)"><circle r="18" fill="#ff2e7e"/><path d="M-7 0 l5 5 l9 -10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="band about" id="about">
+  <div class="wrap">
+    <div>
+      <h2>About VS Ecommerce</h2>
+      <p>VS Ecommerce is a small, family-run online retail business based in Peterborough, owned by Vijay Bhashamalla. We buy stock directly from brands, manufacturers and established UK wholesalers, and sell it to customers across the UK on Amazon.</p>
+      <p>Our stock is stored and shipped by Amazon's fulfilment network, so customers get fast delivery and Amazon's own customer service, and suppliers get a partner who keeps their products in stock and well presented.</p>
+      <p>We only sell genuine, new products bought from legitimate sources, and we keep full invoices for everything we list.</p>
+    </div>
+    <ul class="facts">
+      <li><b>Genuine products only</b><span>Bought from brands and authorised distributors, with invoices.</span></li>
+      <li><b>Sold on Amazon UK</b><span>Stored and shipped by Fulfilment by Amazon.</span></li>
+      <li><b>UK based</b><span>Peterborough, England.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="suppliers" style="background:var(--card)">
+  <div class="wrap">
+    <h2>Two kinds of partners, one standard of care</h2>
+    <div class="grid2">
+      <article class="aud" style="background:var(--bg)">
+        <span class="tag">For suppliers and brands</span>
+        <h3>Work with us</h3>
+        <p>We're looking for brands, manufacturers, distributors and wholesalers who want a reliable reseller on Amazon UK.</p>
+        <h4>What we offer</h4>
+        <ul>
+          <li>Regular, repeat orders as products sell through</li>
+          <li>Accurate, high-quality listings that protect your brand</li>
+          <li>Respect for your pricing policies and RRP</li>
+          <li>Prompt payment and clear communication</li>
+        </ul>
+        <h4>What we look for</h4>
+        <ul>
+          <li>Genuine, new stock with proper VAT invoices</li>
+          <li>Products with steady demand in the UK</li>
+          <li>Price lists, minimum order quantities and lead times</li>
+        </ul>
+        <div class="btns"><a class="btn pink" href="#contact" data-who="Supplier or brand">Send us your price list</a></div>
+      </article>
+      <article class="aud" id="customers" style="background:var(--bg)">
+        <span class="tag">For customers</span>
+        <h3>Bought from us on Amazon?</h3>
+        <p>Thank you for your order. Because we sell through Amazon, your order, delivery and returns are all handled in your Amazon account.</p>
+        <h4>Help with an order</h4>
+        <ul>
+          <li><b>Track a parcel:</b> Amazon → Your Orders → Track package</li>
+          <li><b>Return an item:</b> Your Orders → Return or replace items</li>
+          <li><b>Message us:</b> Your Orders → Get help with order → Contact seller</li>
+        </ul>
+        <h4>Product questions</h4>
+        <p>Have a question before you buy, or a problem with a product? Email us and we'll help.</p>
+        <div class="btns"><a class="btn pink" href="#contact" data-who="Customer">Contact us</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <h2>How supplying to us works</h2>
+    <ol class="steps">
+      <li><b>Get in touch</b><span>Send your company details and a current price list.</span></li>
+      <li><b>Account set-up</b><span>We share our business details for your trade account application.</span></li>
+      <li><b>First order</b><span>We place a trial order to test the product on Amazon.</span></li>
+      <li><b>Regular reorders</b><span>Products that sell well get repeat orders on a steady schedule.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="faq" style="background:var(--card)">
+  <div class="wrap faqs">
+    <div>
+      <h3>Supplier questions</h3>
+      <details><summary>Do you sell anywhere other than Amazon?</summary><p>Amazon UK is our main sales channel. If you have rules about where your products can be sold, tell us and we'll follow them.</p></details>
+      <details><summary>Can you provide trade references and business details?</summary><p>Yes. Contact us and we'll send our full business details for your trade account application.</p></details>
+      <details><summary>Will you undercut my other retailers?</summary><p>No. We follow suppliers' pricing policies and aim to keep a healthy, stable price on Amazon.</p></details>
+    </div>
+    <div>
+      <h3>Customer questions</h3>
+      <details><summary>Are your products genuine?</summary><p>Yes. Every product is new and bought from the brand or an authorised supplier, with invoices.</p></details>
+      <details><summary>Who delivers my order?</summary><p>Our orders are packed and shipped by Amazon, so delivery options and tracking are shown in your Amazon account.</p></details>
+      <details><summary>How do I return something?</summary><p>Start a return from Your Orders in your Amazon account. Returns follow Amazon's returns policy.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Contact us</h2>
+      <p>Suppliers, brands and customers are all welcome. We aim to reply within one working day.</p>
+      <p class="mail">sneha@vsecommerce.co.uk</p>
+      <dl class="biz">
+        <dt>Business</dt><dd>VS Ecommerce</dd>
+        <dt>Owner</dt><dd>Vijay Bhashamalla, sole trader</dd>
+        <dt>Address</dt><dd>23 Cross Street, Peterborough, PE1 1XA, United Kingdom</dd>
+        <dt>Email</dt><dd>sneha@vsecommerce.co.uk</dd>
+        <dt>Sells on</dt><dd>Amazon UK</dd>
+      </dl>
+      <p style="font-size:14px;margin-top:14px">VS Ecommerce is a trading name of Vijay Bhashamalla, sole trader.</p>
+    </div>
+    <form id="f" novalidate>
+      <div class="row2">
+        <label>Your name<input id="n" autocomplete="name" required></label>
+        <label>Email<input id="e" type="email" autocomplete="email" required></label>
+      </div>
+      <div class="row2">
+        <label>I am a
+          <select id="s">
+            <option>Supplier or brand</option>
+            <option>Customer</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Company (optional)<input id="c" autocomplete="organization"></label>
+      </div>
+      <label>Message<textarea id="m" placeholder="For suppliers: your products and price list link. For customers: your Amazon order number and question."></textarea></label>
+      <button class="btn pink" type="submit">Send message</button>
+      <div id="out" role="status"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> VS Ecommerce, a trading name of Vijay Bhashamalla (sole trader)</span>
+    <span>23 Cross Street, Peterborough, PE1 1XA · sneha@vsecommerce.co.uk</span>
+  </div>
+</footer>
+
+<script>
+{
+  const TO = 'sneha@vsecommerce.co.uk';
+  const f = document.getElementById('f'), out = document.getElementById('out'), sel = document.getElementById('s');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('[data-who]').forEach(a => a.addEventListener('click', () => { sel.value = a.dataset.who; }));
+  f.addEventListener('submit', ev => {
+    ev.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const n = v('n'), e = v('e');
+    out.className = 'on';
+    if (!n || !/^\S+@\S+\.\S+$/.test(e)) { out.textContent = 'Please add your name and a valid email address.'; return; }
+    const body = 'Name: ' + n + '\nEmail: ' + e + '\nI am a: ' + sel.value + '\nCompany: ' + v('c') + '\n\n' + v('m');
+    out.textContent = 'Opening your email app with your message ready to send. If nothing opens, email ' + TO + ' directly.';
+    location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('Website enquiry: ' + sel.value) + '&body=' + encodeURIComponent(body);
+  });
+}
+</script>
+</body>
+</html>
